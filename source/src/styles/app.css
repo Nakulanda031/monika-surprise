@@ -84,6 +84,7 @@ code{background:rgba(255,255,255,.6);padding:1px 6px;border-radius:6px}
 .letter{padding:26px 22px;max-width:480px;font-size:1.12rem}.letter p{margin:0 0 14px}.sign{font-family:'Caveat',cursive;font-size:1.8rem;line-height:1.3;margin:0!important}
 /* music */
 .music{position:fixed;right:12px;bottom:max(12px,env(safe-area-inset-bottom));z-index:15;display:flex;align-items:center;gap:8px;padding:6px 12px 6px 6px;border-radius:999px}.music input{width:80px;accent-color:#f58bb0}
+@media (max-width: 640px){.music{bottom:calc(max(14px,env(safe-area-inset-bottom)) + 68px);right:12px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.cloud,.bit{display:none}.reveal{opacity:1}}
 
 /* CINEMATIC UPGRADE — October 2026 */
