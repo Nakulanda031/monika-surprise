@@ -1,0 +1,17 @@
+MONIKA - A LITTLE SECRET
+
+1. monika-surprise-single-file.html  -> double-click to open in any browser (works offline, everything included)
+2. ready-to-upload/                  -> drag this folder onto https://app.netlify.com/drop to get a public HTTPS link
+3. source/                           -> editable project. Edit source/src/data/birthdayContent.ts, then:
+                                        npm install ; npm run build   (new ready-to-upload = source/dist)
+4. After you have the real link:        cd source ; npm run qr -- https://your-link
+   Card text: "Scan this... a little surprise is waiting for you."
+Full details: source/README.md
+
+
+CINEMATIC UPGRADE (Oct 2026)
+- The standalone HTML and ready-to-upload CSS now include cinematic starfield, soft glow, fade-in transitions, hover motion, and reduced-motion accessibility.
+- Preview: double-click monika-surprise-single-file.html.
+- Editable source changes are in source/src/styles/app.css.
+- For deployment, upload the contents of ready-to-upload/ to Netlify Drop.
+- Music is not included; browsers require a user tap before audio playback, so add a licensed audio file later if desired.

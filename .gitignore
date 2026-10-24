@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+source/node_modules/
+
+# Production builds
+dist/
+source/dist/
+
+# Python cache & temporary files
+*.pyc
+__pycache__/
+serve.py
+
+# System files
+.DS_Store
+Thumbs.db
