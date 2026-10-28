@@ -11,23 +11,47 @@ import FinalReveal from '../components/FinalReveal';
 import CrushHint from '../components/CrushHint';
 import MusicPlayer from '../components/MusicPlayer';
 import { clearStored, useStored } from '../hooks/useStored';
+import { isMidnightUnlocked } from '../lib/time';
+
 const STAGES = ['welcome', 'countdown', 'balloons', 'photos', 'videos', 'notes', 'final', 'crush'] as const;
 const LABELS = ['Welcome', 'Countdown', 'Balloons', 'Photos', 'Videos', 'Notes', 'Surprise', 'Secret'];
+
 export default function Journey() {
   const [run, setRun] = useState(0);
   const [saved, setStage] = useStored<number>('stage', 0);
-  const idx = Number.isInteger(saved) && saved >= 0 && saved < STAGES.length ? saved : 0;
+  const isLocked = !isMidnightUnlocked();
+  const idx = isLocked ? 0 : (Number.isInteger(saved) && saved >= 0 && saved < STAGES.length ? saved : 0);
+
+  // Guard against accessing subsequent stages before midnight IST
+  useEffect(() => {
+    if (isLocked && saved !== 0) {
+      setStage(0);
+    }
+  }, [isLocked, saved, setStage]);
+
   const go = (d: number) => setStage(Math.min(STAGES.length - 1, Math.max(0, idx + d)));
   const replay = () => { clearStored(); setRun(r => r + 1); setStage(0); };
+
   useEffect(() => { window.scrollTo(0, 0); }, [idx]);
+
   const night = idx >= 6;
   const p = { onBack: () => go(-1), onNext: () => go(1) };
+
   return (
     <div className={`app${night ? ' night' : ''}`} key={run}>
       <Sky night={night} />
       {idx > 0 && <header className="top"><ProgressIndicator step={idx + 1} total={STAGES.length} label={LABELS[idx]} /></header>}
       <main className="stage" key={STAGES[idx]}>
-        {idx === 0 && <WelcomeScreen onBegin={() => { window.dispatchEvent(new CustomEvent('monika-start-music')); go(1); }} />}
+        {idx === 0 && (
+          <WelcomeScreen
+            onBegin={() => {
+              window.dispatchEvent(new CustomEvent('monika-start-music'));
+              try { localStorage.setItem('monika:stage', '2'); } catch {}
+              // Proceed directly to the celebration journey (Balloons = stage 2)
+              setStage(2);
+            }}
+          />
+        )}
         {idx === 1 && <Countdown {...p} />}
         {idx === 2 && <BalloonGame {...p} />}
         {idx === 3 && <PhotoGallery {...p} />}

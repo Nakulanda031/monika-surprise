@@ -419,3 +419,92 @@ body{background:#10152f}
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Page 2 — Midnight Countdown Styles */
+.countdown-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 580px;
+  margin: 0 auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: cinema-enter 1s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  z-index: 5;
+}
+.countdown-page.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.countdown-glow {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(247, 169, 196, 0.22) 0%, rgba(185, 139, 224, 0.12) 50%, transparent 75%);
+  pointer-events: none;
+  z-index: -1;
+  animation: cinema-gift 4s ease-in-out infinite;
+}
+.countdown-title {
+  color: #fffdfa;
+  text-shadow: 0 0 24px rgba(255, 182, 217, 0.45), 0 3px 14px rgba(10, 14, 35, 0.7);
+  font-size: clamp(1.8rem, 7vw, 2.8rem);
+  line-height: 1.15;
+  margin: 0;
+}
+.countdown-subtitle {
+  color: #ffd6e7;
+  text-shadow: 0 2px 10px rgba(10, 14, 35, 0.6);
+  font-size: clamp(1.05rem, 4vw, 1.35rem);
+  margin: 0;
+  max-width: 34ch;
+}
+.clock.three-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  width: 100%;
+  max-width: 380px;
+  margin: 8px auto;
+}
+.clock.four-cols {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  width: 100%;
+  max-width: 440px;
+  margin: 8px auto;
+}
+.countdown-page .card.tick {
+  background: rgba(28, 34, 68, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 20px;
+  box-shadow: 0 14px 40px rgba(8, 10, 35, 0.25), 0 0 20px rgba(247, 169, 196, 0.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 16px 8px;
+}
+.countdown-page .card.tick b {
+  color: #fff;
+  font-size: clamp(2rem, 8vw, 2.8rem);
+  text-shadow: 0 0 16px rgba(255, 214, 231, 0.6);
+}
+.countdown-page .card.tick small {
+  color: #e6d9ff;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.countdown-hint {
+  color: #e6d9ff;
+  font-size: 0.92rem;
+  text-shadow: 0 1px 8px rgba(10, 14, 35, 0.5);
+  margin: 0;
+}
