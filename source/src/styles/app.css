@@ -508,3 +508,124 @@ body{background:#10152f}
   text-shadow: 0 1px 8px rgba(10, 14, 35, 0.5);
   margin: 0;
 }
+
+/* STORY PAGE & PERSONAL SIGNATURE */
+.story-page {
+  min-height: 85vh;
+  justify-content: center;
+  gap: 18px;
+  position: relative;
+}
+.story-progress {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+.story-step-badge {
+  font-family: 'Figtree', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffd6e7;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 3px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+.story-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.story-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+  transition: all 0.35s ease;
+}
+.story-dot.past {
+  background: #f7a9c4;
+  opacity: 0.6;
+}
+.story-dot.active {
+  background: #fff;
+  transform: scale(1.35);
+  box-shadow: 0 0 10px #ffd6e7, 0 0 16px rgba(247, 169, 196, 0.8);
+}
+.story-card {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(24, 29, 62, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 24px 70px rgba(8, 10, 35, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: min-height 0.35s ease;
+}
+.story-scenes {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: center;
+}
+.story-line {
+  font-size: clamp(1.1rem, 4.2vw, 1.25rem);
+  line-height: 1.55;
+  margin: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.story-line.active-line {
+  color: #fffdfa;
+  text-shadow: 0 0 18px rgba(255, 214, 231, 0.5), 0 2px 10px rgba(10, 14, 35, 0.6);
+  animation: cinema-rise 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.story-line.past-line {
+  color: #d1c2ec;
+  opacity: 0.55;
+  transform: scale(0.98);
+}
+.story-controls {
+  margin-top: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 52px;
+}
+.story-btn {
+  padding: 12px 28px;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  animation: cinema-rise 0.65s ease both;
+  box-shadow: 0 8px 24px rgba(247, 169, 196, 0.35);
+}
+.story-final {
+  text-align: center;
+  animation: cinema-enter 1s ease both;
+}
+.story-final .final-text {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(1.6rem, 5.5vw, 2.1rem);
+  line-height: 1.35;
+  color: #fffdfa;
+  margin: 0;
+  text-shadow: 0 0 16px rgba(255, 214, 231, 0.6);
+}
+.personal-signature {
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(0.92rem, 3.4vw, 1.02rem);
+  line-height: 1.5;
+  color: #ffd6e7;
+  opacity: 0.95;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px dashed rgba(255, 214, 231, 0.3);
+  text-shadow: 0 0 12px rgba(255, 182, 217, 0.4);
+  animation: cinema-rise 1.2s 0.35s both;
+}
